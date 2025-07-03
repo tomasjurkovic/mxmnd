@@ -38,4 +38,9 @@ export class LoginPage extends HelperBase {
     const errorText = await this.errorMessage.textContent();
     expect(errorText).toContain("Epic sadface: Sorry, this user has been locked out.");
   }
+
+  async verifyUserIsLoggedInAndSeeProductsGridPage(): Promise<void> {
+    await this.verifyUrlContains("/inventory.html");
+    expect(await this.page.title()).toContain("Swag Labs");
+  }
 }
