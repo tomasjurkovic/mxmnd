@@ -30,8 +30,10 @@ export class ProductsGridPage extends HelperBase {
         );
     }
 
-    async verifyProductsAreSortedFromZToA(itemNames: string[]): Promise<void> {
-        const sortedItemNames = [...itemNames].sort((a, b) => b.localeCompare(a));
+    async verifyProductsAreSorted(itemNames: string[], order: "asc" | "desc" = "asc"): Promise<void> {
+        const sortedItemNames = [...itemNames].sort((a, b) =>
+            order === "asc" ? a.localeCompare(b) : b.localeCompare(a)
+        );
         expect(itemNames).toEqual(sortedItemNames);
     }
 }
