@@ -16,7 +16,7 @@ export class CartPage extends HelperBase {
         this.inventoryItemPrice = page.locator("[data-test='inventory-item-price']");
     }
 
-    async clickCheckOutBtn(): Promise<void> {
+    async clickOnCheckoutBtn(): Promise<void> {
         await this.checkOutBtn.click();
     }
 

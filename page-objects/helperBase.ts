@@ -17,4 +17,8 @@ export class HelperBase {
   async clickOnCartBtn(): Promise<void> {
     await this.cartBtn.click();
   }
+
+  async waitForSpecificNumberOfSeconds(seconds: number): Promise<void> {
+    await this.page.waitForTimeout(seconds * 1000);
+  }
 }
