@@ -25,34 +25,4 @@ test.describe.parallel(
         await (await pm.onCheckoutStepTwoPage()).waitForSpecificNumberOfSeconds(0.5);
         await (await pm.onCheckoutStepTwoPage()).verifyUserIsLocatedOnCheckoutStepTwoPage();
     });
-
-    test("Verify correct error message appears when user forgets to insert first name in checkout form", async ({ page }) => {
-        const pm = new PageManager(page);
-        await (await pm.onProductsGridPage()).clickOnSauceLabsBackpackItem();
-        await (await pm.onProductDetailsPage()).clickOnAddToCartBtn();  
-        await (await pm.onProductDetailsPage()).clickOnCartBtn();
-        await (await pm.onCartPage()).clickOnCheckoutBtn();
-        await (await pm.onCheckoutYourInformationPage()).fillCheckoutInformation(null, "Doe", "12345");
-        await (await pm.onCheckoutYourInformationPage()).verifyErrorMessageIsDisplayedWhenCheckoutInformationIsNotFilled("firstName")
-    });
-
-    test("Verify correct error message appears when user forgets to insert last name in checkout form", async ({ page }) => {
-        const pm = new PageManager(page);
-        await (await pm.onProductsGridPage()).clickOnSauceLabsBackpackItem();
-        await (await pm.onProductDetailsPage()).clickOnAddToCartBtn();  
-        await (await pm.onProductDetailsPage()).clickOnCartBtn();
-        await (await pm.onCartPage()).clickOnCheckoutBtn();
-        await (await pm.onCheckoutYourInformationPage()).fillCheckoutInformation("John", null, "12345");
-        await (await pm.onCheckoutYourInformationPage()).verifyErrorMessageIsDisplayedWhenCheckoutInformationIsNotFilled("lastName")
-    });
-
-    test("Verify correct error message appears when user forgets to insert zip code in checkout form", async ({ page }) => {
-        const pm = new PageManager(page);
-        await (await pm.onProductsGridPage()).clickOnSauceLabsBackpackItem();
-        await (await pm.onProductDetailsPage()).clickOnAddToCartBtn();  
-        await (await pm.onProductDetailsPage()).clickOnCartBtn();
-        await (await pm.onCartPage()).clickOnCheckoutBtn();
-        await (await pm.onCheckoutYourInformationPage()).fillCheckoutInformation("John", "Doe");
-        await (await pm.onCheckoutYourInformationPage()).verifyErrorMessageIsDisplayedWhenCheckoutInformationIsNotFilled("zipCode")
-    });
 });

@@ -5,6 +5,7 @@ import { CartPage } from "./cartPage";
 import { ProductsDetailPage } from "./productDetailPage";
 import { CheckoutYourInformationPage } from "./checkoutYourInformationPage";
 import { CheckoutStepTwoPage } from "./checkoutStepTwoPage";
+import { CheckoutCompletePage } from "./checkoutCompletePage";
 
 export class PageManager {
     private readonly page: Page;
@@ -14,6 +15,7 @@ export class PageManager {
     private readonly productsGridPage: ProductsGridPage;
     private readonly checkoutYourInformationPage: CheckoutYourInformationPage;
     private readonly checkoutStepTwoPage: CheckoutStepTwoPage;
+    private readonly checkoutCompletePage: CheckoutCompletePage;
 
     constructor(page: Page) {
     this.page = page;
@@ -23,6 +25,7 @@ export class PageManager {
     this.productsDetailPage = new ProductsDetailPage(this.page);
     this.checkoutYourInformationPage = new CheckoutYourInformationPage(this.page);
     this.checkoutStepTwoPage = new CheckoutStepTwoPage(this.page);
+    this.checkoutCompletePage = new CheckoutCompletePage(this.page);
     }
 
     async onLoginPage() {
@@ -47,5 +50,9 @@ export class PageManager {
 
     async onCheckoutStepTwoPage() {
         return this.checkoutStepTwoPage;
+    }
+
+    async onCheckoutCompletePage() {
+        return this.checkoutCompletePage;
     }
 }
