@@ -4,17 +4,18 @@ import { SortOptions } from "../enums/sortOptions";
 
 export class ProductsGridPage extends HelperBase {
 
-    readonly cartLink: Locator;
     readonly sortDropdown: Locator;
+    readonly sauceLabsBackpackItem: Locator;
 
     constructor(page: Page) {
         super(page);
-        this.cartLink = page.locator("[data-test='shopping-cart-link']");
         this.sortDropdown = page.locator("select[data-test='product-sort-container']");
+        this.sauceLabsBackpackItem = page.locator("img[alt='Sauce Labs Backpack']"); 
     }
 
-    async clickCartLink(): Promise<void> {
-        await this.cartLink.click();
+    async clickOnSauceLabsBackpackItem(): Promise<void> {
+        await this.sauceLabsBackpackItem.waitFor({ state: "visible" });
+        await this.sauceLabsBackpackItem.click();
     }
 
     async selectSortOption(option: SortOptions): Promise<void> {

@@ -23,7 +23,7 @@ test.describe.parallel(
         await (await pm.onProductsGridPage()).verifyProductsAreSorted(sortedNames, "desc");	
     });
 
-        test("Verify sorting functionality works when sorting by name (A to Z)", async ({ page }) => {
+    test("Verify sorting functionality works when sorting by name (A to Z)", async ({ page }) => {
         const pm = new PageManager(page);
         await (await pm.onProductsGridPage()).selectSortOption(SortOptions.NAME_A_TO_Z);
         const sortedNames = await (await pm.onProductsGridPage()).getInventoryItemNames(page);
